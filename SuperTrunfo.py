@@ -59,12 +59,12 @@ baralho = [
     ["Venipede",543,260,5.3],
     ["Dragonite",149,600,210],
     ["Machop",66, 305, 19.5],
-    ["Falinks",870,470,62.0],
     ["Wailmer",320,400,130],
     ["Groundon",383,670,352],
     ["Darkrai",491,600,50.5],
     ["Scraggy",559,348,11.8],
     ["Annihilape",979,535,56],
+    ["Falinks",870,470,62.0],
     ["Zoroark",571,510,81.1],
     ["Druddigon",621,485,139]
 ]
