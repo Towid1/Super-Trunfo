@@ -3,7 +3,7 @@ import random
 
 def turno(vez,carta):
         input(f"\nVez do jogador {vez} Pressione enter para continuar!")
-        print(f"\nSua carta atual:\nNome: {carta[0]}\n(1)Dex: {carta[1]}\n(2)IV: {carta[2]}\n(3)Peso: {carta[3]}")
+        print(f"\nSua carta atual: {carta[0]}\n(1)Dex: {carta[1]}\n(2)IV: {carta[2]}\n(3)Peso: {carta[3]}")
         print("\nQual atributo você quer comparar?")
         while True:
             atributo = int(input("(1)Número da dex, (2)IV total ou (3)Peso: "))
@@ -27,7 +27,11 @@ def jogador_vencedor(p1,p2):
           return "Jogador 2"
 
 def vitória_de_turno(stat,p1,p2):
-    print(f"\nO {nome_atributo(stat)} de {p1[0]} ({p1[stat]}) é maior do que {p2[0]} ({p2[stat]})")
+    if jogador_vencedor(p1[stat],p2[stat]) == "Jogador 1":
+        vencedor,perdedor = p1,p2
+    elif jogador_vencedor(p1[stat],p2[stat]) == "Jogador 2":
+        vencedor,perdedor = p2,p1
+    print(f"\nO {nome_atributo(stat)} de {vencedor[0]} ({vencedor[stat]}) é maior do que {perdedor[0]} ({perdedor[stat]})")
     print(f"{jogador_vencedor(p1[atributo],p2[atributo])} ganhou a rodada! E esta com (J1){len(jogador_1)} vs. (J2){len(jogador_2)}.")
 
 while True:
