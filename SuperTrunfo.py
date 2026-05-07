@@ -20,11 +20,15 @@ def nome_atributo(n):
     elif n == 3:
         return "Peso"
 
-def teste_de_vitória(p1,p2,baralho):
-     if len(p1) == len(baralho):
+def jogador_vencedor(p1,p2):
+     if p1 > p2:
           return "Jogador 1"
-     elif len(p2) == len(baralho):
+     elif p2 > p1:
           return "Jogador 2"
+
+def vitória_de_turno(stat,p1,p2):
+    print(f"\nO {nome_atributo(stat)} de {p1[0]} ({p1[stat]}) é maior do que {p2[0]} ({p2[stat]})")
+    print(f"{jogador_vencedor(p1[atributo],p2[atributo])} ganhou a rodada! E esta com (J1){len(jogador_1)} vs. (J2){len(jogador_2)}.")
 
 while True:
     n_jogadores = str(input("Número de jogadores(1 ou 2): "))
@@ -113,16 +117,15 @@ while len(jogador_1) != 0 and len(jogador_2) != 0:
     if carta1[atributo] > carta2[atributo]:
         jogador_1 += monte_espera + [carta1] + [carta2]
         monte_espera = []
-        print(f"\nO {nome_atributo(atributo)} de {carta1[0]} ({carta1[atributo]}) é maior do que {carta2[0]} ({carta2[atributo]})")
-        print(f"Jogador 1 ganhou a rodada! E esta com {len(jogador_1)} cartas de {len(baralho)}.")
+        vitória_de_turno(atributo,carta1,carta2)
     elif carta2[atributo] > carta1[atributo]:
         jogador_2 += monte_espera + [carta2] + [carta1]
         monte_espera = []
         print(f"\nO {nome_atributo(atributo)} de {carta2[0]} ({carta2[atributo]}) é maior do que {carta1[0]} ({carta1[atributo]})")
-        print(f"Jogador 2 ganhou a rodada! E esta com {len(jogador_2)} cartas de {len(baralho)}.")
+        print(f"Jogador 2 ganhou a rodada! E esta com (J1){len(jogador_1)} cartas vs. (J2){len(jogador_2)} cartas.")
     else:
         monte_espera += [carta1] + [carta2]
         print(f"\nO {nome_atributo(atributo)} de {carta1[0]} e {carta2[0]} são iguais ({carta1[atributo]})")
         print(f"Empate! Monte de espera: {monte_espera}")
 
-print(f"\n{teste_de_vitória(jogador_1,jogador_2,baralho)} venceu! Em {rodadas} rodadas!")
+print(f"\n{jogador_vencedor(carta1[atributo],carta2[atributo])} venceu! Em {rodadas} rodadas!")
