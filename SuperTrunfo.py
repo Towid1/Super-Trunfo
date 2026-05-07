@@ -121,8 +121,7 @@ while len(jogador_1) != 0 and len(jogador_2) != 0:
     elif carta2[atributo] > carta1[atributo]:
         jogador_2 += monte_espera + [carta2] + [carta1]
         monte_espera = []
-        print(f"\nO {nome_atributo(atributo)} de {carta2[0]} ({carta2[atributo]}) é maior do que {carta1[0]} ({carta1[atributo]})")
-        print(f"Jogador 2 ganhou a rodada! E esta com (J1){len(jogador_1)} cartas vs. (J2){len(jogador_2)} cartas.")
+        vitória_de_turno(atributo,carta1,carta2)
     else:
         monte_espera += [carta1] + [carta2]
         print(f"\nO {nome_atributo(atributo)} de {carta1[0]} e {carta2[0]} são iguais ({carta1[atributo]})")
