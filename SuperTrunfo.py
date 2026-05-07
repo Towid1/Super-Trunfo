@@ -2,9 +2,9 @@
 import random
 
 def turno(vez,carta):
-        input(f"Vez do jogador {vez} Pressione enter para continuar!")
-        print("Sua carta atual:",carta)
-        print("Qual atributo você quer comparar?")
+        input(f"\nVez do jogador {vez} Pressione enter para continuar!")
+        print(f"\nSua carta atual:\nNome: {carta[0]}\n(1)Dex: {carta[1]}\n(2)IV: {carta[2]}\n(3)Peso: {carta[3]}")
+        print("\nQual atributo você quer comparar?")
         while True:
             atributo = int(input("(1)Número da dex, (2)IV total ou (3)Peso: "))
             if atributo == 1 or atributo == 2 or atributo == 3:
@@ -92,7 +92,7 @@ while len(jogador_1) != 0 and len(jogador_2) != 0:
 
     # JOGADOR 2 (Máquina)
         elif vez == 2:
-            input(f"Vez do jogador {vez} (CPU) Pressione enter para continuar!")
+            input(f"\nVez do jogador {vez} (CPU) Pressione enter para continuar!")
             atributo = carta2.index(max(carta2[1:]))
             vez = 1
 
@@ -113,16 +113,16 @@ while len(jogador_1) != 0 and len(jogador_2) != 0:
     if carta1[atributo] > carta2[atributo]:
         jogador_1 += monte_espera + [carta1] + [carta2]
         monte_espera = []
-        print(f"O {nome_atributo(atributo)} de {carta1[0]} ({carta1[atributo]}) é maior do que {carta2[0]} ({carta2[atributo]})")
+        print(f"\nO {nome_atributo(atributo)} de {carta1[0]} ({carta1[atributo]}) é maior do que {carta2[0]} ({carta2[atributo]})")
         print(f"Jogador 1 ganhou a rodada! E esta com {len(jogador_1)} cartas de {len(baralho)}.")
     elif carta2[atributo] > carta1[atributo]:
         jogador_2 += monte_espera + [carta2] + [carta1]
         monte_espera = []
-        print(f"O {nome_atributo(atributo)} de {carta2[0]} ({carta2[atributo]}) é maior do que {carta1[0]} ({carta1[atributo]})")
+        print(f"\nO {nome_atributo(atributo)} de {carta2[0]} ({carta2[atributo]}) é maior do que {carta1[0]} ({carta1[atributo]})")
         print(f"Jogador 2 ganhou a rodada! E esta com {len(jogador_2)} cartas de {len(baralho)}.")
     else:
         monte_espera += [carta1] + [carta2]
-        print(f"O {nome_atributo(atributo)} de {carta1[0]} e {carta2[0]} são iguais ({carta1[atributo]})")
+        print(f"\nO {nome_atributo(atributo)} de {carta1[0]} e {carta2[0]} são iguais ({carta1[atributo]})")
         print(f"Empate! Monte de espera: {monte_espera}")
 
-print(f"{teste_de_vitória(jogador_1,jogador_2,baralho)} venceu! Em {rodadas} rodadas!")
+print(f"\n{teste_de_vitória(jogador_1,jogador_2,baralho)} venceu! Em {rodadas} rodadas!")
